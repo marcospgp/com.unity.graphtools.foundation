@@ -21,7 +21,7 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.Tests.Models
         const string k_HiddenDirName = "Assets_older~";
 #endif
         const string k_CurrentVersionAssetName = "CurrentVersion";
-        static readonly string k_AssetDir = "Packages/com.unity.graphtools.foundation/Tests/Editor/Models/CompatibilityTests/TestAssets";
+        static readonly string k_AssetDir = "Assets/Graph Tools Foundation/Tests/Editor/Models/CompatibilityTests/TestAssets";
         static readonly string k_TmpCurrentVersionAssetPath = $"{k_TemporaryAssetDir}/{k_CurrentVersionAssetName}.asset";
         static readonly string k_CurrentVersionAssetPath = $"{k_AssetDir}/{k_HiddenDirName}/{k_CurrentVersionAssetName}.asset";
         static readonly string k_PreviousVersionsDirectoryPath = $"{k_AssetDir}/{k_HiddenDirName}/PreviousVersions";
