@@ -9,6 +9,13 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         {
             foreach (var path in paths)
             {
+                // Ignore scene assets, which would throw exception
+                // "Do not use ReadObjectThreaded on scene objects!"
+                if (typeof(SceneAsset) == AssetDatabase.GetMainAssetTypeAtPath(path))
+                {
+                    continue;
+                }
+
                 var assets = AssetDatabase.LoadAllAssetsAtPath(path);
 
                 foreach (var graphAssetModel in assets.OfType<IGraphAssetModel>())
@@ -16,6 +23,7 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
                     graphAssetModel.Dirty = false;
                 }
             }
+
             return paths;
         }
     }
