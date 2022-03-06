@@ -10,7 +10,9 @@
         "Unity.GraphTools.Foundation.Overdrive",
         "Unity.GraphTools.Foundation.Overdrive.CommandStateObserver"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": true,
     "overrideReferences": true,
