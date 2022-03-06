@@ -1,5 +1,9 @@
 # Graph Tools Foundation
 
+---
+Reason for forking: Had to make the package able to be compiled into a build. It seems to have been designed as editor only.
+---
+
 Graph Tools Foundation is a framework to build graph editing tools
 including a graph data model, a UI foundation and graph-to-asset pipeline.
 
