@@ -2,6 +2,6 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
 {
     static class AssetHelper
     {
-        internal const string AssetPath = "Packages/com.unity.graphtools.foundation/Editor/";
+        internal const string AssetPath = "Assets/Graph Tools Foundation/No longer editor/";
     }
 }
