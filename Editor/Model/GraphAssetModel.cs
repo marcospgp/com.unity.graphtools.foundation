@@ -40,6 +40,8 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         /// <inheritdoc />
         public void CreateGraph(string graphName, Type stencilType = null, bool markAssetDirty = true)
         {
+            #if UNITY_EDITOR
+
             Debug.Assert(typeof(IGraphModel).IsAssignableFrom(GraphModelType));
             var graphModel = (IGraphModel)Activator.CreateInstance(GraphModelType);
             if (graphModel == null)
@@ -56,6 +58,12 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
             {
                 EditorUtility.SetDirty(this);
             }
+
+            #else
+
+            throw new Exception("Unavailable outside editor.");
+
+            #endif
         }
 
         /// <summary>

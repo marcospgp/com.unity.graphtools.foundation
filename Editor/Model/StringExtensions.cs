@@ -13,7 +13,11 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         /// <returns>The nicified variable name.</returns>
         public static string Nicify(this string value)
         {
+            #if UNITY_EDITOR
             return ObjectNames.NicifyVariableName(value);
+            #else
+            return value;
+            #endif
         }
     }
 }

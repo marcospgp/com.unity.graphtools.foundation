@@ -65,6 +65,8 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         /// <returns>A new graph asset.</returns>
         public static IGraphAssetModel Create(string assetName, string assetPath, Type assetTypeToCreate)
         {
+            #if UNITY_EDITOR
+
             var asset = ScriptableObject.CreateInstance(assetTypeToCreate);
             if (!string.IsNullOrEmpty(assetPath))
             {
@@ -75,6 +77,12 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
             }
             asset.name = assetName;
             return asset as IGraphAssetModel;
+
+            #else
+
+            throw new Exception("No creating assets outside editor.");
+
+            #endif
         }
     }
 }

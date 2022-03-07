@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using System;
 using System.Collections.Generic;
 using UnityEditor.GraphToolsFoundation.Overdrive.Bridge;
@@ -76,3 +78,5 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         }
     }
 }
+
+#endif

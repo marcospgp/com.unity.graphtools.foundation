@@ -55,6 +55,8 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
         /// <returns>A clone of this instance.</returns>
         public ConstantNodeModel Clone()
         {
+            #if UNITY_EDITOR
+
             if (GetType() == typeof(ConstantNodeModel))
             {
                 return new ConstantNodeModel { Value = Value.CloneConstant() };
@@ -62,6 +64,12 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
             var clone = Activator.CreateInstance(GetType());
             EditorUtility.CopySerializedManagedFieldsOnly(this, clone);
             return (ConstantNodeModel)clone;
+
+            #else
+
+            throw new Exception("Unavailable outside editor.");
+
+            #endif
         }
 
         /// <inheritdoc />

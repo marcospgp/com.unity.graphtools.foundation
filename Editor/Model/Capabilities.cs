@@ -12,7 +12,9 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
     /// Acts as an extensible enum.
     /// </remarks>
     // ReSharper disable InconsistentNaming
+    #if UNITY_EDITOR
     [InitializeOnLoad]
+    #endif
     public class Capabilities : Enumeration
     {
         const string k_CapabilityPrefix = "";

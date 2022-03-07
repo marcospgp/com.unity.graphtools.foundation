@@ -297,6 +297,8 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
         /// <param name="initializationCallback">An initialization method for the constant to be called right after the constant is created.</param>
         protected void UpdateConstantForInput(IPortModel inputPort, Action<IConstant> initializationCallback = null)
         {
+            #if UNITY_EDITOR
+
             var id = inputPort.UniqueName;
             if ((inputPort.Options & PortModelOptions.NoEmbeddedConstant) != 0)
             {
@@ -336,17 +338,33 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
                 EditorUtility.SetDirty((Object)AssetModel);
                 m_InputConstantsById[id] = embeddedConstant;
             }
+
+            #else
+
+            throw new System.Exception("Unavailable outside editor.");
+
+            #endif
         }
 
         public IConstantNodeModel CloneConstant(IConstantNodeModel source)
         {
+            #if UNITY_EDITOR
+
             var clone = Activator.CreateInstance(source.GetType());
             EditorUtility.CopySerializedManagedFieldsOnly(source, clone);
             return (IConstantNodeModel)clone;
+
+            #else
+
+            throw new System.Exception("Unavailable outside editor.");
+
+            #endif
         }
 
         public void CloneInputConstants()
         {
+            #if UNITY_EDITOR
+
             foreach (var id in m_InputConstantsById.Keys.ToList())
             {
                 IConstant inputConstant = m_InputConstantsById[id];
@@ -354,6 +372,12 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
                 m_InputConstantsById[id] = newConstant;
                 EditorUtility.SetDirty((Object)AssetModel);
             }
+
+            #else
+
+            throw new System.Exception("Unavailable outside editor.");
+
+            #endif
         }
 
         /// <inheritdoc />

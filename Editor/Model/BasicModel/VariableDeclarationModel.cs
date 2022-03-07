@@ -101,12 +101,20 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
         /// <inheritdoc />
         public virtual void CreateInitializationValue()
         {
+            #if UNITY_EDITOR
+
             if (GraphModel.Stencil.GetConstantNodeValueType(DataType) != null)
             {
                 InitializationModel = GraphModel.Stencil.CreateConstantValue(DataType);
 
                 EditorUtility.SetDirty((Object)AssetModel);
             }
+
+            #else
+
+            throw new Exception("Unavailable outside editor.");
+
+            #endif
         }
 
         bool Equals(VariableDeclarationModel other)

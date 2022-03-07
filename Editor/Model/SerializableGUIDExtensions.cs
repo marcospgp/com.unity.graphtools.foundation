@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine.GraphToolsFoundation.Overdrive;
 
 namespace UnityEditor.GraphToolsFoundation.Overdrive
@@ -29,3 +31,4 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
     }
 }
 
+#endif
