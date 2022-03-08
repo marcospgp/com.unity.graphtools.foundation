@@ -297,8 +297,6 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
         /// <param name="initializationCallback">An initialization method for the constant to be called right after the constant is created.</param>
         protected void UpdateConstantForInput(IPortModel inputPort, Action<IConstant> initializationCallback = null)
         {
-            #if UNITY_EDITOR
-
             var id = inputPort.UniqueName;
             if ((inputPort.Options & PortModelOptions.NoEmbeddedConstant) != 0)
             {
@@ -335,15 +333,13 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
             {
                 var embeddedConstant = ((GraphModel)GraphModel).Stencil.CreateConstantValue(inputPort.DataTypeHandle);
                 initializationCallback?.Invoke(embeddedConstant);
+
+#if UNITY_EDITOR
                 EditorUtility.SetDirty((Object)AssetModel);
+#endif
+
                 m_InputConstantsById[id] = embeddedConstant;
             }
-
-            #else
-
-            throw new System.Exception("Unavailable outside editor.");
-
-            #endif
         }
 
         public IConstantNodeModel CloneConstant(IConstantNodeModel source)

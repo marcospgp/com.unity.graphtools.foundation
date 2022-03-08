@@ -72,11 +72,15 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
             get => m_StencilType;
             set
             {
+#if UNITY_EDITOR
                 if (value == null)
                     value = DefaultStencilType;
+
                 Assert.IsTrue(typeof(IStencil).IsAssignableFrom(value));
+
                 m_StencilType = value;
                 Stencil = InstantiateStencil(StencilType);
+#endif
             }
         }
 
