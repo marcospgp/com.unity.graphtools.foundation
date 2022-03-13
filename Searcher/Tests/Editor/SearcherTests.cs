@@ -1,3 +1,5 @@
+#pragma warning disable // Prevent warnings from showing in console. This is not our code.
+
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;

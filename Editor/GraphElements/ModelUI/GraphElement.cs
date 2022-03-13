@@ -1,4 +1,5 @@
-using System;
+#pragma warning disable // Prevent warnings from showing in console. This is not our code.
+
 using UnityEditor.GraphToolsFoundation.Overdrive.Bridge;
 using UnityEngine;
 using UnityEngine.UIElements;

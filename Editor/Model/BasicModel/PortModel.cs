@@ -13,6 +13,7 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
     [MovedFrom(false, sourceAssembly: "Unity.GraphTools.Foundation.Overdrive.Editor")]
     public class PortModel : GraphElementModel, IReorderableEdgesPortModel, IHasTitle
     {
+        protected string tooltip;
         string m_UniqueId;
 
         /// <inheritdoc />
@@ -103,6 +104,10 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
         {
             get
             {
+                if (!string.IsNullOrEmpty(this.tooltip)) {
+                    return this.tooltip;
+                }
+
                 string newTooltip = Direction == PortDirection.Output ? "Output" : "Input";
                 if (PortType == PortType.Execution)
                 {
@@ -118,7 +123,8 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
             }
 
             // We don't support setting the tooltip for base port models.
-            set { }
+            // Edit: now you can!
+            set => this.tooltip = value;
         }
 
         /// <inheritdoc />
