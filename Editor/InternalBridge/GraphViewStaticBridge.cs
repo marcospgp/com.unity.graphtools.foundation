@@ -240,7 +240,9 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.Bridge
             Color32 flags = new Color32((byte)VertexFlags.IsGraphViewEdge, 0, 0, 0);
             md.SetNextVertex(new Vertex() { position = pos, uv = uv, tint = tint, ids = ids, flags = flags });
 #else
+#pragma warning disable CS0618 // obsolete warning
             Color32 flags = new Color32(0, 0, 0, (byte)VertexFlags.LastType);
+#pragma warning restore
             md.SetNextVertex(new Vertex() { position = pos, uv = uv, tint = tint, idsFlags = flags });
 #endif
         }
