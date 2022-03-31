@@ -287,7 +287,10 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.Bridge
 
         public static Vector2 GetMousePosition()
         {
-            return PointerDeviceState.GetPointerPosition(PointerId.mousePointerId);
+            return PointerDeviceState.GetPointerPosition(
+                PointerId.mousePointerId,
+                contextType: ContextType.Editor
+            );
         }
 
         public static void SetEventPropagationToNormal(this EventBase e)
