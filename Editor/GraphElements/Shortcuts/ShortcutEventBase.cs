@@ -51,7 +51,14 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         protected override void Init()
         {
             base.Init();
-            MousePosition = GraphViewStaticBridge.GetMousePosition();
+
+            // Commented out, was causing exception:
+            // MissingMethodException: UnityEngine.Vector2
+            // UnityEngine.UIElements.PointerDeviceState.GetPointerPosition(int)
+            // UnityEditor.GraphToolsFoundation.Overdrive.ShortcutEventBase`1[T].Init ()
+            //
+            // MousePosition = GraphViewStaticBridge.GetMousePosition();
+
             this.SetEventPropagationToNormal();
         }
 
