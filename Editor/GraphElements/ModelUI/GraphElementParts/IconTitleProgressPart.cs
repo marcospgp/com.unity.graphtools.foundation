@@ -48,8 +48,9 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         {
             if (model.IsCollapsible())
             {
-                var collapseButtonPart = NodeCollapseButtonPart.Create(collapseButtonPartName, model, ownerElement, ussClassName);
-                PartList.AppendPart(collapseButtonPart);
+                // Commented out - we do not want the collapse buton.
+                // var collapseButtonPart = NodeCollapseButtonPart.Create(collapseButtonPartName, model, ownerElement, ussClassName);
+                // PartList.AppendPart(collapseButtonPart);
             }
         }
 
