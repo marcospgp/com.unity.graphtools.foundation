@@ -277,7 +277,11 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
         {
             var portModel = CreatePort(PortDirection.Input, orientation, portName, portType, dataType, portId, options);
             portModel = ReuseOrCreatePortModel(portModel, m_PreviousInputs, m_InputsById);
+
+#if UNITY_EDITOR
             UpdateConstantForInput(portModel, initializationCallback);
+#endif
+
             return portModel;
         }
 
