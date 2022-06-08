@@ -649,6 +649,12 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
 
             var edgeModel = InstantiateEdge(toPort, fromPort, guid);
             AddEdge(edgeModel);
+
+            // Marcos: Made it so event is only triggered after edges have been
+            // updated.
+            toPort.NodeModel.OnConnection(toPort, fromPort);
+            fromPort.NodeModel.OnConnection(fromPort, toPort);
+
             return edgeModel;
         }
 

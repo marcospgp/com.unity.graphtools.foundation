@@ -126,8 +126,11 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive.BasicModel
             FromPort = fromPortModel;
             ToPort = toPortModel;
 
-            toPortModel.NodeModel.OnConnection(toPortModel, fromPortModel);
-            fromPortModel.NodeModel.OnConnection(fromPortModel, toPortModel);
+            // Marcos: Made it so event is only triggered after edges have been
+            // updated.
+            //
+            // toPortModel.NodeModel.OnConnection(toPortModel, fromPortModel);
+            // fromPortModel.NodeModel.OnConnection(fromPortModel, toPortModel);
         }
 
         /// <inheritdoc />
