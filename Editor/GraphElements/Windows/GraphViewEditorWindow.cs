@@ -436,23 +436,28 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         // we want more granular control and register it manually
         void OnGlobalSelectionChange()
         {
-            // if we're in Locked mode, keep current selection
-            if (Locked)
-                return;
+            // Edit: Do not change graph when selecting different asset.
+            // We want to close the terrain graph editor window before switching
+            // graphs due to how previews are refreshed with an async task.
+            // Switching graphs with an existing window causes an exception.
 
-            foreach (var onboardingProvider in m_BlankPage?.OnboardingProviders ?? Enumerable.Empty<OnboardingProvider>())
-            {
-                if (onboardingProvider.GetGraphAndObjectFromSelection(CommandDispatcher, Selection.activeObject, out var graphAssetModel, out var boundObject))
-                {
-                    SetCurrentSelection(graphAssetModel, OpenMode.Open, boundObject);
-                    return;
-                }
-            }
+            // // if we're in Locked mode, keep current selection
+            // if (Locked)
+            //     return;
 
-            if (Selection.activeObject is IGraphAssetModel graph && CanHandleAssetType(graph))
-            {
-                SetCurrentSelection(graph, OpenMode.Open);
-            }
+            // foreach (var onboardingProvider in m_BlankPage?.OnboardingProviders ?? Enumerable.Empty<OnboardingProvider>())
+            // {
+            //     if (onboardingProvider.GetGraphAndObjectFromSelection(CommandDispatcher, Selection.activeObject, out var graphAssetModel, out var boundObject))
+            //     {
+            //         SetCurrentSelection(graphAssetModel, OpenMode.Open, boundObject);
+            //         return;
+            //     }
+            // }
+
+            // if (Selection.activeObject is IGraphAssetModel graph && CanHandleAssetType(graph))
+            // {
+            //     SetCurrentSelection(graph, OpenMode.Open);
+            // }
         }
 
         public void SetCurrentSelection(IGraphAssetModel graphAssetModel, OpenMode mode, GameObject boundObject = null)
