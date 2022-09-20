@@ -59,19 +59,22 @@
 }
 
 #searchIcon {
-    width: 32px;
     height: 16px;
+    width: 19px;
     background-image:resource("FlatSkin/SearchSmallDownOff");
     top: 2px;
     left: 4px;
     margin-right: 2px;
 }
 
+/*
 #searchIcon.Active {
     background-image:resource("FlatSkin/SearchSmallDownOn");
 }
+*/
 
 #autoCompleteLabel {
+    display: none;
     position: absolute;
     background-image: none;
     top: 2px;
@@ -84,7 +87,7 @@
 #searchBox {
     background-image: none;
     position: absolute;
-    left: 30px;
+    left: 20px;
     right: 0;
     bottom: 0;
     margin-bottom: 2px;
@@ -119,9 +122,14 @@
     --unity-item-height: 18;
 }
 
+/*
+When updating Unity to the 2022 branch, the searcher list was misaligned.
+Commenting this out.
+
 .unity-list-view > * {
     left: 15px;
 }
+*/
 
 .unity-list-view > * #labelsContainer {
     flex-direction: row;

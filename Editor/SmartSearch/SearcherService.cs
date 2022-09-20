@@ -194,7 +194,7 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
         public static void ShowGraphNodes(Stencil stencil, GraphToolState graphToolState, Vector2 position, Action<GraphNodeModelSearcherItem> callback)
         {
             var filter = stencil.GetSearcherFilterProvider()?.GetGraphSearcherFilter();
-            var adapter = stencil.GetSearcherAdapter(graphToolState.WindowState.GraphModel, "Add a graph node");
+            var adapter = stencil.GetSearcherAdapter(graphToolState.WindowState.GraphModel, "Create Node");
             var dbProvider = stencil.GetSearcherDatabaseProvider();
 
             if (dbProvider == null)
