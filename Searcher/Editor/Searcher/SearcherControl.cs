@@ -780,7 +780,8 @@ namespace UnityEditor.GraphToolsFoundation.Searcher
                 case KeyCode.PageDown:
                     index = m_ListView.selectedIndex;
                     if (index >= 0 && index < m_ListView.itemsSource.Count)
-                        m_ListView.OnKeyDown(keyDownEvent);
+                        // m_ListView.OnKeyDown(keyDownEvent);
+                        m_ListView.SendEvent(keyDownEvent);
                     break;
             }
         }
