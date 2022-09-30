@@ -551,7 +551,7 @@ public class TemperatureAndTimePart : BaseModelUIPart
         base.PostBuildPartUI();
 
         var stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(
-            "Assets/Terrain Graph/Graph Tools Foundation/Samples/Recipes/Editor/UI/Stylesheets/BakeNodePart.uss");
+            "Assets/MarcosPereira/TerrainGraph/GraphToolsFoundation/Samples/Recipes/Editor/UI/Stylesheets/BakeNodePart.uss");
 
         if (stylesheet != null)
         {
