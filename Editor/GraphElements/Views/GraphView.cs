@@ -1775,13 +1775,19 @@ namespace UnityEditor.GraphToolsFoundation.Overdrive
             }
 
             int index = 0;
+            bool needRepair = false;
             foreach (var edge in graphModel.EdgeModels)
             {
                 if (!CreateEdgeUI(edge))
                 {
-                    Debug.LogWarning($"Edge {index} cannot be restored: {edge}");
+                    Debug.LogWarning($"Edge {index} cannot be restored: {edge}. Repairing model...");
+                    needRepair = true;
                 }
                 index++;
+            }
+
+            if (needRepair) {
+                graphModel.Repair();
             }
 
             var placemats = new List<GraphElement>();
