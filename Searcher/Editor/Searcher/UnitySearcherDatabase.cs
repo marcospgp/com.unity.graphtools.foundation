@@ -55,7 +55,20 @@ namespace UnityEditor.GraphToolsFoundation.Searcher
         public override IEnumerable<SearcherItem> PerformSearch(string query,
             IReadOnlyList<SearcherItem> filteredItems)
         {
-            var searchQuery = m_QueryEngine.ParseQuery("\"" + query + "\""); // TODO add support for "doc:" filter?
+            var parseQuery = m_QueryEngine.GetType().GetMethod("ParseQuery");
+
+            // Compatibility for older versions
+            if (parseQuery == null) {
+                parseQuery = m_QueryEngine.GetType().GetMethod("Parse");
+            }
+
+            var searchQuery = (Query<SearcherItem>) parseQuery.Invoke(
+                m_QueryEngine,
+                new Object[] {
+                    "\"" + query + "\""
+                }
+            ); // TODO add support for "doc:" filter?
+
             m_CurrentItem = null;
             var searchResults = searchQuery.Apply(filteredItems);
             return searchResults;
