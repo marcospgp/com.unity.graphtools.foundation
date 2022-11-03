@@ -62,7 +62,7 @@ namespace UnityEditor.GraphToolsFoundation.Searcher
                 parseQuery = m_QueryEngine.GetType().GetMethod("Parse");
             }
 
-            var searchQuery = (Query<SearcherItem>) parseQuery.Invoke(
+            var searchQuery = parseQuery.Invoke(
                 m_QueryEngine,
                 new Object[] {
                     "\"" + query + "\""
@@ -70,7 +70,14 @@ namespace UnityEditor.GraphToolsFoundation.Searcher
             ); // TODO add support for "doc:" filter?
 
             m_CurrentItem = null;
-            var searchResults = searchQuery.Apply(filteredItems);
+            var searchResults = (IEnumerable<SearcherItem>) searchQuery
+                .GetType()
+                .GetMethod("Apply")
+                .Invoke(
+                    searchQuery,
+                    new Object[] { filteredItems }
+                );
+
             return searchResults;
         }
 
